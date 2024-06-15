@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { RiAdminFill } from "react-icons/ri";
-import { FaDownload } from "react-icons/fa";
+import { FaChessKing, FaDownload } from "react-icons/fa";
 import { MdBlockFlipped } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const Allusers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -14,9 +15,47 @@ const Allusers = () => {
     },
   });
 
+  const handleAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          title: "Success",
+          text: `${user.name} is an admin now`,
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: `Something went wrong`,
+          icon: "error",
+        });
+      }
+    });
+  };
+
+  const handleBlockUsers = (user) => {
+    axiosSecure.patch(`/users/block/${user._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          title: "Success",
+          text: `${user.name} is Blocked`,
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: `Something went wrong`,
+          icon: "error",
+        });
+      }
+    });
+  };
+
   return (
     <div>
-      <h1 className=" text-2xl">Total users: {users.length}</h1>
+      <h1 className="text-2xl">Total users: {users.length}</h1>
       <div>
         <div className="overflow-x-auto">
           <table className="table">
@@ -27,11 +66,11 @@ const Allusers = () => {
                 <th>User Profile</th>
                 <th>Status</th>
                 <th>Role</th>
-                <th className=" text-center">Action</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((user, index = 1) => (
+              {users.map((user, index) => (
                 <tr key={user._id}>
                   <th>{index + 1}</th>
                   <td>
@@ -51,23 +90,49 @@ const Allusers = () => {
                     </div>
                   </td>
                   <td>
-                    <span className=" bg-green-100 p-2 rounded-full">
+                    <span
+                      className={`${
+                        user.status === "Blocked"
+                          ? "bg-red-100"
+                          : "bg-green-100"
+                      } p-2 rounded-full`}>
                       {user.status}
                     </span>
                   </td>
                   <td>
-                    <button className="btn bg-yellow-100 hover:bg-red-400">
-                      <RiAdminFill />
-                    </button>
+                    {user.role === "admin" ? (
+                      <button className="btn bg-yellow-100 hover:bg-yellow-400">
+                        <FaChessKing />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleAdmin(user)}
+                        className="btn bg-yellow-100 hover:bg-yellow-400">
+                        <RiAdminFill />
+                      </button>
+                    )}
                   </td>
-                  <th className=" flex gap-2">
-                    <button className="btn bg-red-100 hover:bg-red-400">
-                      <MdBlockFlipped />
-                    </button>
-                    <button className="btn bg-blue-100">
+                  <th className="flex gap-2">
+                    {user.status === "Blocked" ? (
+                      <button
+                        disabled
+                        className="btn bg-red-100 hover:bg-red-400">
+                        <MdBlockFlipped />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleBlockUsers(user)}
+                        className="btn bg-red-100 hover:bg-red-400">
+                        <MdBlockFlipped />
+                      </button>
+                    )}
+
+                    <button className="btn bg-blue-100 hover:bg-blue-400">
                       <FaDownload />
                     </button>
-                    <button className="btn bg-[#C3C1F9]">See info</button>
+                    <button className="btn bg-[#C3C1F9] hover:bg-[#8985f6]">
+                      See info
+                    </button>
                   </th>
                 </tr>
               ))}
