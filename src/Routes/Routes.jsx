@@ -9,6 +9,7 @@ import UpAppointments from "../Pages/UserDashborad/UpAppointments";
 import MyTestResult from "../Pages/UserDashborad/MyTestResult";
 import MyProfile from "../Pages/UserDashborad/MyProfile";
 import Allusers from "../Pages/AdminDashboard/Allusers";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLay />,
+    element: (
+      <PrivateRoute>
+        <DashboardLay></DashboardLay>
+      </PrivateRoute>
+    ),
     children: [
       // all user dashboard routes
 
