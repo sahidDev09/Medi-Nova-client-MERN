@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import app from "../Firebase/Firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -20,6 +21,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -51,29 +53,33 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // code for token from server
-  const getToken = async (email) => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/jwt`,
-      { email },
-      { withCredentials: true }
-    );
-    return data;
-  };
-
   // onAuthStateChange
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      setLoading(false); 
       if (currentUser) {
-        getToken(currentUser.email);
+        try {
+          const userinfo = { email: currentUser.email };
+          const res = await axiosPublic.post("/jwt", userinfo, {
+            withCredentials: true,
+          }); 
+
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        } catch (error) {
+          console.error("Error fetching or storing JWT:", error);
+          
+        }
+      } else {
+        localStorage.removeItem("access-token");
       }
-      setLoading(false);
+      setLoading(false)
     });
-    return () => {
-      return unsubscribe();
-    };
-  }, []);
+
+    return () => unsubscribe();
+  }, [axiosPublic]);
 
   const authInfo = {
     user,
@@ -90,6 +96,5 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
-
 
 export default AuthProvider;

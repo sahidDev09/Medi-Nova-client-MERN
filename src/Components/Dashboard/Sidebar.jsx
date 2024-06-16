@@ -11,11 +11,13 @@ import { AiOutlineBars } from "react-icons/ai";
 import { useState } from "react";
 import { PiFlagBannerFill } from "react-icons/pi";
 import { MdNoteAdd, MdOutlinePageview } from "react-icons/md";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setIsActive] = useState(false);
-  const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
 
   const navigate = useNavigate();
 
