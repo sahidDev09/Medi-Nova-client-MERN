@@ -9,7 +9,7 @@ const DashboardLay = () => {
       <Sidebar />
 
       {/* outlet */}
-      <div className=" flex-1 border border-red-200">
+      <div className=" flex-1">
         <div className=" p-5">
           <Outlet />
         </div>

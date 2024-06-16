@@ -96,7 +96,7 @@ const Sidebar = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/dashboard/myAppointments"
+                  to="/dashboard/addtest"
                   className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
                   <MdNoteAdd />
                   <span className="mx-2 text-sm font-medium">Add Test</span>

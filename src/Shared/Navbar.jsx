@@ -8,13 +8,12 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
 
-  console.log(user);
-
   if (loading) {
-    <div className=" mx-auto flex justify-center items-center">
-      <HashLoader color="#36d7b7" />;
-    </div>;
-    return;
+    return (
+      <div className="mx-auto flex justify-center items-center">
+        <HashLoader color="#36d7b7" />
+      </div>
+    );
   }
 
   const handleLogout = async () => {
@@ -80,7 +79,7 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                   <NavLink to="/dashboard">
-                    <a>Dashboard</a>
+                    <span>Dashboard</span>
                   </NavLink>
                 </li>
                 <li onClick={handleLogout}>

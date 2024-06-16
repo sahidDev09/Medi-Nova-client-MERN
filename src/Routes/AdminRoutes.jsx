@@ -1,13 +1,15 @@
-import PropTypes from "prop-types";
-import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import useAdmin from "../Hooks/useAdmin";
+import { Navigate, useLocation } from "react-router-dom";
 import { DNA } from "react-loader-spinner";
 
-const PrivateRoute = ({ children }) => {
+// eslint-disable-next-line react/prop-types
+const AdminRoutes = ({ children }) => {
   const { user, loading } = useAuth();
+  const [isAdmin, isPending] = useAdmin();
   const location = useLocation();
 
-  if (loading)
+  if (loading || isPending)
     return (
       <div className=" flex justify-center items-center min-h-screen">
         <DNA
@@ -20,12 +22,8 @@ const PrivateRoute = ({ children }) => {
         />
       </div>
     );
-  if (user) return children;
+  if (user && isAdmin) return children;
   return <Navigate to="/login" state={location.pathname} replace="true" />;
 };
 
-PrivateRoute.propTypes = {
-  children: PropTypes.element,
-};
-
-export default PrivateRoute;
+export default AdminRoutes;

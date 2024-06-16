@@ -10,6 +10,8 @@ import MyTestResult from "../Pages/UserDashborad/MyTestResult";
 import MyProfile from "../Pages/UserDashborad/MyProfile";
 import Allusers from "../Pages/AdminDashboard/Allusers";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoutes from "./AdminRoutes";
+import AddTest from "../Pages/AdminDashboard/AddTest";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +65,20 @@ export const router = createBrowserRouter([
 
       {
         path: "/dashboard/allusers",
-        element: <Allusers />,
+        element: (
+          <AdminRoutes>
+            <Allusers />,
+          </AdminRoutes>
+        ),
+      },
+
+      {
+        path: "/dashboard/addtest",
+        element: (
+          <AdminRoutes>
+            <AddTest />,
+          </AdminRoutes>
+        ),
       },
     ],
   },
