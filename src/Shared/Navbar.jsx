@@ -4,11 +4,13 @@ import useAuth from "../Hooks/useAuth";
 import { HashLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useStatus from "../Hooks/useStatus";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
+  const [isBlocked, statusPending] = useStatus();
 
-  if (loading) {
+  if (loading || statusPending) {
     return (
       <div className="mx-auto flex justify-center items-center">
         <HashLoader color="#36d7b7" />
@@ -20,7 +22,7 @@ const Navbar = () => {
     try {
       Swal.fire({
         title: "Are you sure?",
-        text: "You want to logout ?",
+        text: "You want to logout?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -38,20 +40,20 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" mt-4">
-      <div className=" flex justify-between">
-        <div className=" flex gap-2">
+    <div className="mt-4">
+      <div className="flex justify-between">
+        <div className="flex gap-2">
           <NavLink to="/">
-            <img className=" w-16" src={logo} alt="" />
+            <img className="w-16" src={logo} alt="MediNova Logo" />
           </NavLink>
           <div className="flex flex-col">
-            <h1 className=" text-2xl font-bold text-[#473288]">MediNova</h1>
-            <p className=" text-sm text-[#A6A5BD]">Diagonistic center</p>
+            <h1 className="text-2xl font-bold text-[#473288]">MediNova</h1>
+            <p className="text-sm text-[#A6A5BD]">Diagnostic Center</p>
           </div>
         </div>
 
         <div className="flex gap-2 items-center">
-          <div className=" md:inline hidden">
+          <div className="md:inline hidden">
             <input
               type="text"
               placeholder="Search"
@@ -66,7 +68,7 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
+                    alt="User Avatar"
                     src={
                       user?.photoURL ||
                       "https://i.ibb.co/DpMk3wY/random-User.jpg"
@@ -77,11 +79,17 @@ const Navbar = () => {
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <NavLink to="/dashboard">
+                {isBlocked ? (
+                  <li className="disabled">
                     <span>Dashboard</span>
-                  </NavLink>
-                </li>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink to="/dashboard">
+                      <span>Dashboard</span>
+                    </NavLink>
+                  </li>
+                )}
                 <li onClick={handleLogout}>
                   <a>Logout</a>
                 </li>
@@ -89,7 +97,7 @@ const Navbar = () => {
             </div>
           ) : (
             <NavLink to="/login">
-              <button className=" btn rounded-full bg-[#8F85DD] text-white hover:bg-[#7464e9]">
+              <button className="btn rounded-full bg-[#8F85DD] text-white hover:bg-[#7464e9]">
                 Sign-in
               </button>
             </NavLink>
