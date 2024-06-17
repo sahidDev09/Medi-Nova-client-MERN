@@ -12,6 +12,7 @@ import Allusers from "../Pages/AdminDashboard/Allusers";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoutes from "./AdminRoutes";
 import AddTest from "../Pages/AdminDashboard/AddTest";
+import Testmanage from "../Pages/AdminDashboard/Testmanage";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,15 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <AddTest />,
+          </AdminRoutes>
+        ),
+      },
+
+      {
+        path: "/dashboard/managetests",
+        element: (
+          <AdminRoutes>
+            <Testmanage />
           </AdminRoutes>
         ),
       },
