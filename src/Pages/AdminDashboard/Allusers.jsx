@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { RiAdminFill } from "react-icons/ri";
@@ -7,7 +8,13 @@ import Swal from "sweetalert2";
 
 const Allusers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
+  const [showModal, setShowmodal] = useState(null);
+
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -40,7 +47,7 @@ const Allusers = () => {
         refetch();
         Swal.fire({
           title: "Success",
-          text: `${user.name} is Blocked`,
+          text: `${user.name} is blocked`,
           icon: "success",
         });
       } else {
@@ -53,13 +60,22 @@ const Allusers = () => {
     });
   };
 
+  const handleUserModal = (_id) => {
+    axiosSecure.get(`/user/info/${_id}`).then((res) => {
+      setShowmodal(res.data);
+      document.getElementById("my_modal_1").showModal();
+      if (isLoading) {
+        <h1>loading..</h1>;
+      }
+    });
+  };
+
   return (
-    <div className=" bg-slate-50 p-4 rounded-md">
+    <div className="bg-slate-50 p-4 rounded-md">
       <h1 className="text-2xl">Total users: {users.length}</h1>
       <div>
         <div className="overflow-x-auto">
           <table className="table">
-            {/* head */}
             <thead>
               <tr>
                 <th>#</th>
@@ -77,10 +93,7 @@ const Allusers = () => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={user.image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
+                          <img src={user.image} alt={`${user.name}'s avatar`} />
                         </div>
                       </div>
                       <div>
@@ -92,7 +105,7 @@ const Allusers = () => {
                   <td>
                     <span
                       className={`${
-                        user.status === "Blocked"
+                        user.status === "blocked"
                           ? "bg-red-100"
                           : "bg-green-100"
                       } p-2 rounded-full`}>
@@ -101,7 +114,7 @@ const Allusers = () => {
                   </td>
                   <td>
                     {user.role === "admin" ? (
-                      <button className="btn bg-yellow-100 hover:bg-yellow-400">
+                      <button className="btn bg-yellow-400">
                         <FaChessKing />
                       </button>
                     ) : (
@@ -113,7 +126,7 @@ const Allusers = () => {
                     )}
                   </td>
                   <th className="flex gap-2">
-                    {user.status === "Blocked" ? (
+                    {user.status === "blocked" ? (
                       <button
                         disabled
                         className="btn bg-red-100 hover:bg-red-400">
@@ -126,11 +139,12 @@ const Allusers = () => {
                         <MdBlockFlipped />
                       </button>
                     )}
-
                     <button className="btn bg-blue-100 hover:bg-blue-400">
                       <FaDownload />
                     </button>
-                    <button className="btn bg-[#C3C1F9] hover:bg-[#8985f6]">
+                    <button
+                      className="btn bg-[#C3C1F9] hover:bg-[#8985f6]"
+                      onClick={() => handleUserModal(user._id)}>
                       See info
                     </button>
                   </th>
@@ -140,6 +154,35 @@ const Allusers = () => {
           </table>
         </div>
       </div>
+
+      {showModal && (
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box flex flex-col gap-2">
+            <h3 className="font-bold text-lg">User Information</h3>
+            <hr />
+            <img
+              className=" w-40 max-h-40 object-cover rounded-2xl border border-blue-300 p-1"
+              src={showModal.image}
+              alt=""
+            />
+            <p className=" font-semibold ">Name: {showModal.name}</p>
+            <p>Email: {showModal.email}</p>
+            <p>
+              Status:{" "}
+              <span className=" text-green-400">{showModal.status}</span>
+            </p>
+            <p>District: {showModal.district}</p>
+            <p>Upazila: {showModal.upazila}</p>
+            <div className="modal-action">
+              <button
+                className="btn"
+                onClick={() => document.getElementById("my_modal_1").close()}>
+                Close
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };

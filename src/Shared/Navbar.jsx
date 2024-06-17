@@ -8,9 +8,9 @@ import useStatus from "../Hooks/useStatus";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
-  const [isBlocked, statusPending] = useStatus();
+  const [isBlocked] = useStatus();
 
-  if (loading || statusPending) {
+  if (loading) {
     return (
       <div className="mx-auto flex justify-center items-center">
         <HashLoader color="#36d7b7" />
