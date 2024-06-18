@@ -5,6 +5,7 @@ import { RiAdminFill } from "react-icons/ri";
 import { FaChessKing, FaDownload } from "react-icons/fa";
 import { MdBlockFlipped } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 const Allusers = () => {
   const axiosSecure = useAxiosSecure();
@@ -114,13 +115,18 @@ const Allusers = () => {
                   </td>
                   <td>
                     {user.role === "admin" ? (
-                      <button className="btn bg-yellow-400">
+                      <button
+                        className="btn bg-yellow-400"
+                        data-tooltip-id="user-tooltip"
+                        data-tooltip-content="Admin">
                         <FaChessKing />
                       </button>
                     ) : (
                       <button
                         onClick={() => handleAdmin(user)}
-                        className="btn bg-yellow-100 hover:bg-yellow-400">
+                        className="btn bg-yellow-100 hover:bg-yellow-400"
+                        data-tooltip-id="user-tooltip"
+                        data-tooltip-content="User">
                         <RiAdminFill />
                       </button>
                     )}
@@ -129,17 +135,24 @@ const Allusers = () => {
                     {user.status === "blocked" ? (
                       <button
                         disabled
-                        className="btn bg-red-100 hover:bg-red-400">
+                        className="btn bg-red-100 hover:bg-red-400"
+                        data-tooltip-id="user-tooltip"
+                        data-tooltip-content="Blocked">
                         <MdBlockFlipped />
                       </button>
                     ) : (
                       <button
                         onClick={() => handleBlockUsers(user)}
-                        className="btn bg-red-100 hover:bg-red-400">
+                        className="btn bg-red-100 hover:bg-red-400"
+                        data-tooltip-id="user-tooltip"
+                        data-tooltip-content="Block">
                         <MdBlockFlipped />
                       </button>
                     )}
-                    <button className="btn bg-blue-100 hover:bg-blue-400">
+                    <button
+                      className="btn bg-blue-100 hover:bg-blue-400"
+                      data-tooltip-id="user-tooltip"
+                      data-tooltip-content="Download">
                       <FaDownload />
                     </button>
                     <button
@@ -183,6 +196,7 @@ const Allusers = () => {
           </div>
         </dialog>
       )}
+      <Tooltip id="user-tooltip"></Tooltip>
     </div>
   );
 };

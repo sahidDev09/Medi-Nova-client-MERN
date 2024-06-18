@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 const Testmanage = () => {
   const { data: tests = [], isLoading } = useQuery({
@@ -60,10 +61,16 @@ const Testmanage = () => {
                     <span>{test.test_details}</span>
                   </td>
                   <th className="flex gap-2">
-                    <button className="btn bg-blue-100 hover:bg-blue-400">
+                    <button
+                      className="btn bg-blue-100 text-lg hover:bg-blue-400"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Edit">
                       <FaEdit />
                     </button>
-                    <button className="btn bg-red-100 hover:bg-red-400">
+                    <button
+                      className="btn bg-red-100 text-lg text-red-700 hover:bg-red-400 hover:text-white"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content="Delete">
                       <MdDelete />
                     </button>
                     <button className="btn bg-[#C3C1F9] hover:bg-[#8985f6]">
@@ -76,6 +83,7 @@ const Testmanage = () => {
           </table>
         </div>
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
