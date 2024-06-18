@@ -1,11 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Testmanage = () => {
-  const { data: tests = [], isLoading } = useQuery({
+  const axiosSecure = useAxiosSecure();
+
+  const {
+    data: tests = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["tests"],
     queryFn: async () => {
       const res = await axiosSecure.get("/tests");
@@ -17,14 +25,42 @@ const Testmanage = () => {
     return <h1>Loading...</h1>;
   }
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/tests/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: `${tests.test_name} has been deleted.`,
+              icon: "success",
+            });
+          } else {
+            toast.error("Failed to delete data");
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div className="relative z-10 mt-14 md:mt-0">
       <h1 className="text-4xl font-bold text-center mt-5">Manage-Tests</h1>
       <hr className="my-5" />
-      <h1 className="text-xl font-semibold mt-3">
-        Total Tests : {tests.length}
-      </h1>
-      <div>
+
+      <div className="bg-slate-50 p-4 rounded-md">
+        <h1 className="text-xl font-semibold mt-3">
+          Total Tests : {tests.length}
+        </h1>
         <div className="overflow-x-auto">
           <table className="table">
             <thead>
@@ -68,6 +104,7 @@ const Testmanage = () => {
                       <FaEdit />
                     </button>
                     <button
+                      onClick={() => handleDelete(test._id)}
                       className="btn bg-red-100 text-lg text-red-700 hover:bg-red-400 hover:text-white"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Delete">
