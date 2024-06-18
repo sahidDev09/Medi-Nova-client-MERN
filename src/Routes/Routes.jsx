@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoutes from "./AdminRoutes";
 import AddTest from "../Pages/AdminDashboard/AddTest";
 import Testmanage from "../Pages/AdminDashboard/Testmanage";
+import UpdateTest from "../Pages/AdminDashboard/UpdateTest";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,15 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <Testmanage />
+          </AdminRoutes>
+        ),
+      },
+
+      {
+        path: "/dashboard/updatetests/:id",
+        element: (
+          <AdminRoutes>
+            <UpdateTest />
           </AdminRoutes>
         ),
       },

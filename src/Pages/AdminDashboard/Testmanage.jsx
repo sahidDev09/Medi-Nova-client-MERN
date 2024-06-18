@@ -5,6 +5,7 @@ import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Testmanage = () => {
   const axiosSecure = useAxiosSecure();
@@ -97,12 +98,14 @@ const Testmanage = () => {
                     <span>{test.test_details}</span>
                   </td>
                   <th className="flex gap-2">
-                    <button
-                      className="btn bg-blue-100 text-lg hover:bg-blue-400"
-                      data-tooltip-id="my-tooltip"
-                      data-tooltip-content="Edit">
-                      <FaEdit />
-                    </button>
+                    <Link to={`/dashboard/updatetests/${test._id}`}>
+                      <button
+                        className="btn bg-blue-100 text-lg hover:bg-blue-400"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Edit">
+                        <FaEdit />
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(test._id)}
                       className="btn bg-red-100 text-lg text-red-700 hover:bg-red-400 hover:text-white"
