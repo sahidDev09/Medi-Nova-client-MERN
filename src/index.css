@@ -19,3 +19,8 @@
   background-color: #c3c1f9;
   color: #2b6cb0;
 }
+
+.sticky-sidebar {
+  position: sticky;
+  top: 0;
+}
