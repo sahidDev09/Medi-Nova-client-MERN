@@ -4,11 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
 const Testmanage = () => {
-  const {
-    data: tests = [],
-    refetch,
-    isLoading,
-  } = useQuery({
+  const { data: tests = [], isLoading } = useQuery({
     queryKey: ["tests"],
     queryFn: async () => {
       const res = await axiosSecure.get("/tests");
@@ -16,14 +12,17 @@ const Testmanage = () => {
     },
   });
 
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <div>
-      <h1 className=" text-4xl font-bold text-center mt-5">Manage-Tests</h1>
-      <hr className=" my-5" />
-      <h1 className=" text-xl font-semibold mt-3">
+    <div className="relative z-10 mt-14 md:mt-0">
+      <h1 className="text-4xl font-bold text-center mt-5">Manage-Tests</h1>
+      <hr className="my-5" />
+      <h1 className="text-xl font-semibold mt-3">
         Total Tests : {tests.length}
       </h1>
-
       <div>
         <div className="overflow-x-auto">
           <table className="table">
@@ -31,7 +30,7 @@ const Testmanage = () => {
               <tr>
                 <th>#</th>
                 <th>Test</th>
-                <th>Details</th>
+                <th className=" hidden md:inline">Details</th>
                 <th>Actionable Dashboard</th>
                 <th></th>
               </tr>
@@ -43,7 +42,7 @@ const Testmanage = () => {
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
-                        <div className="mask rounded-xl w-20 h-20">
+                        <div className="mask rounded-xl md:w-20 md:h-20 w-12 h-12">
                           <img
                             src={test.image}
                             alt="Avatar Tailwind CSS Component"
@@ -51,13 +50,13 @@ const Testmanage = () => {
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold text-lg">
+                        <div className="font-bold md:text-lg">
                           {test.test_name}
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td className="hidden md:table-cell">
                     <span>{test.test_details}</span>
                   </td>
                   <th className="flex gap-2">

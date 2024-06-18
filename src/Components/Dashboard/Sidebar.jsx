@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { ImProfile } from "react-icons/im";
@@ -8,17 +9,13 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AiOutlineBars } from "react-icons/ai";
-import { useState } from "react";
 import { PiFlagBannerFill } from "react-icons/pi";
 import { MdNoteAdd, MdOutlinePageview } from "react-icons/md";
 import useAdmin from "../../Hooks/useAdmin";
 
-const Sidebar = () => {
+const Sidebar = ({ isActive, handleSideToggle }) => {
   const { logOut } = useAuth();
-  const [isActive, setIsActive] = useState(false);
-
   const [isAdmin] = useAdmin();
-
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -43,10 +40,6 @@ const Sidebar = () => {
     }
   };
 
-  const handleSideToggle = () => {
-    setIsActive(!isActive);
-  };
-
   return (
     <>
       {/* sidebar for mobile view */}
@@ -60,7 +53,9 @@ const Sidebar = () => {
             <p className="text-sm text-[#A6A5BD]">Diagnostic center</p>
           </div>
         </div>
-        <button onClick={handleSideToggle} className="p-4 focus:outline-none">
+        <button
+          onClick={handleSideToggle}
+          className="p-4 focus:outline-none z-50">
           <AiOutlineBars className="text-xl" />
         </button>
       </div>
@@ -68,7 +63,7 @@ const Sidebar = () => {
       {/* sidebar for normal screen */}
       <aside
         className={`fixed md:static top-0 left-0 w-72 h-screen px-5 py-8 overflow-y-auto bg-blue-50 border-r rtl:border-r-0 rtl:border-l transition-transform transform ${
-          isActive ? "translate-x-0" : "-translate-x-full"
+          isActive ? "translate-x-0 z-40" : "-translate-x-full"
         } md:translate-x-0`}>
         <div className="gap-2 justify-start items-center flex">
           <NavLink to="/">

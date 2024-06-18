@@ -71,7 +71,7 @@ const Allusers = () => {
   };
 
   return (
-    <div className="bg-slate-50 p-4 rounded-md">
+    <div className="bg-slate-50 p-4 rounded-md mt-14 md:mt-0">
       <h1 className="text-2xl">Total users: {users.length}</h1>
       <div>
         <div className="overflow-x-auto">
