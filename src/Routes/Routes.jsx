@@ -14,6 +14,8 @@ import AdminRoutes from "./AdminRoutes";
 import AddTest from "../Pages/AdminDashboard/AddTest";
 import Testmanage from "../Pages/AdminDashboard/Testmanage";
 import UpdateTest from "../Pages/AdminDashboard/UpdateTest";
+import AllTests from "../Pages/Home/AllTests";
+import TestDetails from "../Pages/Home/TestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +28,16 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "",
+        path: "/alltests",
+        element: <AllTests />,
+      },
+      {
+        path: "/alltests/:id",
+        element: (
+          <PrivateRoute>
+            <TestDetails />,
+          </PrivateRoute>
+        ),
       },
     ],
   },

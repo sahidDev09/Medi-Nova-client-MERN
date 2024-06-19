@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import useAuth from "../Hooks/useAuth";
-import { HashLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useStatus from "../Hooks/useStatus";
+import { IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, loading, logOut } = useAuth();
@@ -12,9 +12,7 @@ const Navbar = () => {
 
   if (loading) {
     return (
-      <div className="mx-auto flex justify-center items-center">
-        <HashLoader color="#36d7b7" />
-      </div>
+      <></>
     );
   }
 
@@ -41,8 +39,16 @@ const Navbar = () => {
 
   return (
     <div className="mt-4">
-      <div className="flex justify-between">
-        <div className="flex gap-2">
+      <div className="gap-2 flex justify-center mb-3 md:hidden">
+        <NavLink to="/">
+          <img className="w-10" src={logo} alt="MediNova Logo" />
+        </NavLink>
+        <div className="flex flex-col">
+          <h1 className="text-xl font-bold text-[#473288]">MediNova</h1>
+        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        <div className="gap-2 hidden md:inline-flex">
           <NavLink to="/">
             <img className="w-16" src={logo} alt="MediNova Logo" />
           </NavLink>
@@ -52,13 +58,50 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 items-center">
-          <div className="md:inline hidden">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto focus:outline-[#8F85DD]"
-            />
+        <div className=" ml-3 md:ml-0">
+          <ul className=" flex gap-5 items-center">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""
+                }>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/alltests"
+                className={({ isActive }) =>
+                  isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""
+                }>
+                All Tests
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""
+                }>
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""
+                }>
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex gap-2 items-center bg-blue-100 md:pl-3 md:pr-1 rounded-full">
+          <div className=" hidden md:table-cell">
+            <IoMenu className=" text-2xl" />
           </div>
           {user ? (
             <div className="dropdown dropdown-end">
