@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const PaymentModal = ({ modal }) => {
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
   const axiosPublic = useAxiosPublic();
-
+  
   const [couponCode, setCouponCode] = useState("");
   const [finalPrice, setFinalPrice] = useState(modal.test_price);
   const [couponApplied, setCouponApplied] = useState(false);
@@ -34,10 +34,10 @@ const PaymentModal = ({ modal }) => {
       setCouponApplied(true);
       Swal.fire({
         toast: true,
-        position: 'top',
-        title: 'Applied',
+        position: "top",
+        title: "Applied",
         text: `Congratulations! You got ${banner.discount_rate_for_coupon}% discount.`,
-        icon: 'success',
+        icon: "success",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -45,10 +45,10 @@ const PaymentModal = ({ modal }) => {
     } else {
       Swal.fire({
         toast: true,
-        position: 'top',
-        title: 'Error!',
-        text: 'Invalid coupon code',
-        icon: 'error',
+        position: "top",
+        title: "Error!",
+        text: "Invalid coupon code",
+        icon: "error",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -87,7 +87,7 @@ const PaymentModal = ({ modal }) => {
             Make payment with stripe
           </h1>
           <Elements stripe={stripePromise}>
-            <CheckoutForm banner={banner} />
+            <CheckoutForm banner={banner} price={finalPrice}/>
           </Elements>
         </div>
       </dialog>
