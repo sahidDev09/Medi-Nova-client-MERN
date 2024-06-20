@@ -86,7 +86,7 @@ const AllTests = () => {
               <div>
                 <img
                   className=" md:w-[500px]"
-                  src="https://i.ibb.co/mSjJKnC/9264822.png"
+                  src="https://i.ibb.co/9ypXYdZ/9264822-1.png"
                   alt=""
                 />
                 <h1 className=" text-4xl font-bold">
@@ -120,7 +120,7 @@ const AllTests = () => {
               onClick={() => handlePageClick(index + 1)}
               className={`items-center hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-slate-100 rounded-md sm:flex dark:bg-gray-800 dark:text-gray-200 ${
                 currentPage === index + 1
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-yellow-500"
                   : "hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
               }`}>
               {index + 1}

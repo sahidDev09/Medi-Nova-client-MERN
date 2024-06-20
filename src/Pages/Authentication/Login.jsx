@@ -13,7 +13,7 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state || "/";
+  const from = location.state?.from?.pathname || "/";
   const { loading, setLoading, signInWithGoogle, signIn } = useAuth();
 
   const handleLoginSubmit = async (e) => {
@@ -27,7 +27,7 @@ const Login = () => {
       setLoading(true);
       await signIn(email, password);
       toast.success("Login Successfull");
-      navigate(from);
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(
         "Something went wrong, Check email and password and try again!"
@@ -51,7 +51,7 @@ const Login = () => {
         };
 
         axiosPublic.post("/users", userData).then(() => {
-          navigate("/");
+          navigate(from, { replace: true });
           toast.success("Signup with google account");
           setLoading(false);
         });

@@ -16,6 +16,7 @@ import Testmanage from "../Pages/AdminDashboard/Testmanage";
 import UpdateTest from "../Pages/AdminDashboard/UpdateTest";
 import AllTests from "../Pages/Home/AllTests";
 import TestDetails from "../Pages/Home/TestDetails";
+import WelcomeDash from "../Pages/WelcomeDash";
 
 export const router = createBrowserRouter([
   {
@@ -35,13 +36,12 @@ export const router = createBrowserRouter([
         path: "/alltests/:id",
         element: (
           <PrivateRoute>
-            <TestDetails />,
+            <TestDetails />
           </PrivateRoute>
         ),
       },
     ],
   },
-
   {
     path: "/login",
     element: <Login />,
@@ -50,61 +50,61 @@ export const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+
   {
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <DashboardLay></DashboardLay>
+        <DashboardLay />
       </PrivateRoute>
     ),
     children: [
-      // all user dashboard routes
-
       {
         index: true,
-        path: "/dashboard/myAppointments",
+        element: <WelcomeDash />,
+      },
+
+      // all user dashboard routes
+      {
+        path: "myAppointments",
         element: <UpAppointments />,
       },
       {
-        path: "/dashboard/myTestresults",
+        path: "myTestresults",
         element: <MyTestResult />,
       },
       {
-        path: "/dashboard/myProfile",
+        path: "myProfile",
         element: <MyProfile />,
       },
 
-      //all admin dashboarad routes
-
+      // all admin dashboard routes
       {
-        path: "/dashboard/allusers",
+        path: "allusers",
         element: (
           <AdminRoutes>
-            <Allusers />,
+            <Allusers />
           </AdminRoutes>
         ),
       },
-
       {
-        path: "/dashboard/addtest",
+        path: "addtest",
         element: (
           <AdminRoutes>
-            <AddTest />,
+            <AddTest />
           </AdminRoutes>
         ),
       },
-
       {
-        path: "/dashboard/managetests",
+        path: "managetests",
         element: (
           <AdminRoutes>
             <Testmanage />
           </AdminRoutes>
         ),
       },
-
       {
-        path: "/dashboard/updatetests/:id",
+        path: "updatetests/:id",
         element: (
           <AdminRoutes>
             <UpdateTest />

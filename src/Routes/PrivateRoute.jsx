@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading)
     return (
-      <div className=" flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen">
         <DNA
           visible={true}
           height="200"
@@ -20,12 +20,14 @@ const PrivateRoute = ({ children }) => {
         />
       </div>
     );
+
   if (user) return children;
-  return <Navigate to="/login" state={location.pathname} replace="true" />;
+
+  return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 PrivateRoute.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element.isRequired,
 };
 
 export default PrivateRoute;

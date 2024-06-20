@@ -59,7 +59,7 @@ const Register = () => {
       const result = await createUser(email, password);
       console.log(result);
       await updateUserProfile(name, data.data.display_url);
-      navigate("/");
+      navigate("/dashboard");
       setLoading(false);
 
       const userInputData = {
@@ -78,7 +78,7 @@ const Register = () => {
         }
       });
     } catch (error) {
-      toast.error("Ohh ohh something went wrong..!");
+      toast.error("Ohh ohh something went wrong..!", +error.message);
     }
   };
 

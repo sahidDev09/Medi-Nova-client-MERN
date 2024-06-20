@@ -21,7 +21,7 @@ const DashboardLay = () => {
       {/* Outlet */}
       <div className={`flex-1 md:ml-72 mt-3 ${isActive ? "md:block" : ""}`}>
         <div className="p-5">
-          <Outlet />
+          <Outlet></Outlet>
         </div>
       </div>
     </div>
