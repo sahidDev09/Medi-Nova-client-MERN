@@ -8,10 +8,10 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
-const PaymentModal = ({ modal }) => {
+const PaymentModal = ({ modal, testsDetails, refetch }) => {
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
   const axiosPublic = useAxiosPublic();
-  
+
   const [couponCode, setCouponCode] = useState("");
   const [finalPrice, setFinalPrice] = useState(modal.test_price);
   const [couponApplied, setCouponApplied] = useState(false);
@@ -87,7 +87,12 @@ const PaymentModal = ({ modal }) => {
             Make payment with stripe
           </h1>
           <Elements stripe={stripePromise}>
-            <CheckoutForm banner={banner} price={finalPrice}/>
+            <CheckoutForm
+              banner={banner}
+              price={finalPrice}
+              testsDetails={testsDetails}
+              refetch={refetch}
+            />
           </Elements>
         </div>
       </dialog>

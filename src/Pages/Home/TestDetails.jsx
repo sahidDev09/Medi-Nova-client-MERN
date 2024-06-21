@@ -6,16 +6,19 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { Calendar } from "react-date-range";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useAuth from "../../Hooks/useAuth";
 import PaymentModal from "./PaymentModal";
+import Swal from "sweetalert2";
 
 const TestDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
-  const { user } = useAuth();
   const [showModal, setShowModal] = useState([]);
 
-  const { data: testsDetails = {}, isLoading } = useQuery({
+  const {
+    data: testsDetails = {},
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["testsDetails", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/tests/${id}`);
@@ -31,53 +34,21 @@ const TestDetails = () => {
   };
 
   const handleBooked = async () => {
-    // if (test_slots > 0) {
-    // const reservationData = {
-    // test_name: test_name,
-    // test_date: test_date,
-    // test_id: testsDetails._id,
-    // booking_email: user.email,
-    // report_status: "pending",
-    // };
-
-    //   console.log(reservationData);
-
-    //   try {
-    //     const res = await axiosPublic.patch(
-    //       `/tests/update/${testsDetails._id}`,
-    //       {
-    //         test_slots: test_slots - 1,
-    //       }
-    //     );
-    //     if (res.data.modifiedCount > 0) {
-    //       refetch();
-    //       Swal.fire({
-    //         title: "Booked",
-    //         text: "Your appointment is booked for selected date",
-    //         icon: "success",
-    //       });
-    //     }
-    //   } catch (error) {
-    //     Swal.fire({
-    //       title: "Error!",
-    //       text: "Failed to book appointment. Please try again later.",
-    //       icon: "error",
-    //     });
-    //   }
-    //}else {
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "No slots available",
-    //     icon: "error",
-    //   });
-    // }
-
     axiosPublic.get(`/tests/${id}`).then((res) => {
       setShowModal([res.data]);
       if (isLoading) {
         return <h1>Loading...</h1>;
       }
-      document.getElementById("my_modal_1").showModal();
+      if (test_slots > 0) {
+        document.getElementById("my_modal_1").showModal();
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "No slots available",
+          icon: "error",
+        });
+        return;
+      }
     });
   };
 
@@ -140,7 +111,11 @@ const TestDetails = () => {
       {showModal &&
         showModal.length > 0 &&
         showModal.map((modal, index) => (
-          <PaymentModal key={index} modal={modal}></PaymentModal>
+          <PaymentModal
+            key={index}
+            modal={modal}
+            testsDetails={testsDetails}
+            refetch={refetch}></PaymentModal>
         ))}
     </div>
   );
