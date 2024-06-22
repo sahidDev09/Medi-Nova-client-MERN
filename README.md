@@ -1,8 +1,50 @@
-# React + Vite
+# MediNova
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MediNova is a comprehensive diagnostic center management system designed to streamline operations for both users and administrators. This web application allows users to book and manage appointments, while administrators can oversee the entire system efficiently.
 
-Currently, two official plugins are available:
+## Live Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live preview of the website [here](https://medinova-dc16a.web.app).
+
+## Key Features
+
+### User Dashboard
+- **Book Appointments:** Users can easily schedule their appointments.
+- **Cancel Appointments:** Flexibly manage and cancel appointments.
+- **Authentication:** Secure login for users.
+- **Responsive Design:** Accessible on both mobile and tablet devices.
+
+### Admin Dashboard
+- **Manage Appointments:** Administrators can view and manage all user appointments.
+- **User Management:** Admins can manage user accounts and access levels.
+- **Dynamic Banner:** Admins can update and customize banners dynamically.
+- **Statistics Charts:** Comprehensive charts for tracking appointment trends and user engagement.
+
+## Admin Access
+
+- **Email:** sahidadmin1@gmail.com
+- **Password:** sahidAdmin1
+
+## Technology Stack
+
+- **Frontend:**
+  - JSX
+  - CSS
+  - React.js
+  - TailwindCSS
+  - Daisy UI
+  - Meraki UI
+- **Backend:**
+  - Node.js
+  - Express.js
+- **Database:**
+  - MongoDB
+- **Authentication and Hosting:**
+  - Firebase
+
+
+
+## Acknowledgements
+
+- **Daisy UI:** For the beautiful and functional UI components.
+- **Meraki UI:** For additional UI components and styles.

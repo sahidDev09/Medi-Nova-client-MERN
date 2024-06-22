@@ -67,6 +67,12 @@ const Home = () => {
 
         <Promotions />
       </div>
+
+      <div>
+        <h1 className=" text-3xl my-3 font-semibold text-center uppercase">
+          recommendation
+        </h1>
+      </div>
     </div>
   );
 };

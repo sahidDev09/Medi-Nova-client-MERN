@@ -34,30 +34,7 @@ const Login = () => {
     }
   };
 
-  // login with goole
 
-  // const handleGoogle = async () => {
-  //   try {
-  //     setLoading(true);
-  //     await signInWithGoogle().then((result) => {
-  //       const userData = {
-  //         name: result.user?.displayName,
-  //         image: result.user?.photoURL,
-  //         email: result.user?.email,
-  //         status: "active",
-  //       };
-
-  //       axiosPublic.post("/users", userData).then(() => {
-  //         toast.success("Signup with google account");
-  //         setLoading(false);
-  //         navigate("/", { replace: true });
-  //       });
-  //     });
-  //   } catch (error) {
-  //     toast.error("Something went wrong!");
-  //     setLoading(false);
-  //   }
-  // };
 
   return (
     <div className="flex justify-center items-center min-h-screen">

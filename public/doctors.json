@@ -1,142 +1,44 @@
 [
   {
-    "doctor_name": "Dr. John Smith",
-    "doctor_location": "New York, NY",
-    "doctor_fee": 200,
-    "doctor_email": "john.smith@medinova.com",
-    "doctor_image": "images/doctors/john_smith.jpg"
-  },
-  {
-    "doctor_name": "Dr. Emily Johnson",
-    "doctor_location": "Los Angeles, CA",
-    "doctor_fee": 180,
-    "doctor_email": "emily.johnson@medinova.com",
-    "doctor_image": "images/doctors/emily_johnson.jpg"
-  },
-  {
-    "doctor_name": "Dr. Michael Brown",
-    "doctor_location": "Chicago, IL",
-    "doctor_fee": 220,
-    "doctor_email": "michael.brown@medinova.com",
-    "doctor_image": "images/doctors/michael_brown.jpg"
-  },
-  {
-    "doctor_name": "Dr. Jessica Williams",
-    "doctor_location": "Houston, TX",
-    "doctor_fee": 190,
-    "doctor_email": "jessica.williams@medinova.com",
-    "doctor_image": "images/doctors/jessica_williams.jpg"
-  },
-  {
-    "doctor_name": "Dr. David Jones",
-    "doctor_location": "Phoenix, AZ",
-    "doctor_fee": 210,
-    "doctor_email": "david.jones@medinova.com",
-    "doctor_image": "images/doctors/david_jones.jpg"
-  },
-  {
-    "doctor_name": "Dr. Sarah Miller",
-    "doctor_location": "Philadelphia, PA",
-    "doctor_fee": 195,
-    "doctor_email": "sarah.miller@medinova.com",
-    "doctor_image": "images/doctors/sarah_miller.jpg"
-  },
-  {
-    "doctor_name": "Dr. James Martinez",
-    "doctor_location": "San Antonio, TX",
-    "doctor_fee": 180,
-    "doctor_email": "james.martinez@medinova.com",
-    "doctor_image": "images/doctors/james_martinez.jpg"
-  },
-  {
-    "doctor_name": "Dr. Linda Hernandez",
-    "doctor_location": "San Diego, CA",
-    "doctor_fee": 220,
-    "doctor_email": "linda.hernandez@medinova.com",
-    "doctor_image": "images/doctors/linda_hernandez.jpg"
-  },
-  {
-    "doctor_name": "Dr. Robert Clark",
-    "doctor_location": "Dallas, TX",
-    "doctor_fee": 205,
-    "doctor_email": "robert.clark@medinova.com",
-    "doctor_image": "images/doctors/robert_clark.jpg"
-  },
-  {
     "doctor_name": "Dr. Karen Lewis",
     "doctor_location": "San Jose, CA",
     "doctor_fee": 215,
     "doctor_email": "karen.lewis@medinova.com",
-    "doctor_image": "images/doctors/karen_lewis.jpg"
+    "doctor_image": "https://i.ibb.co/T04n9Kf/file-20191203-66986-im7o5.jpg"
   },
   {
     "doctor_name": "Dr. Thomas Lee",
     "doctor_location": "Austin, TX",
     "doctor_fee": 200,
     "doctor_email": "thomas.lee@medinova.com",
-    "doctor_image": "images/doctors/thomas_lee.jpg"
+    "doctor_image": "https://i.ibb.co/ZHKtcMQ/images.jpg"
   },
   {
     "doctor_name": "Dr. Patricia Harris",
     "doctor_location": "Jacksonville, FL",
     "doctor_fee": 195,
     "doctor_email": "patricia.harris@medinova.com",
-    "doctor_image": "images/doctors/patricia_harris.jpg"
+    "doctor_image": "https://i.ibb.co/dtzBJ7v/Get-an-Appointment-with-the-Best-Heart-Doctor-Cardiologist-in-Chandigarh.jpg"
   },
   {
     "doctor_name": "Dr. Charles Robinson",
     "doctor_location": "San Francisco, CA",
     "doctor_fee": 210,
     "doctor_email": "charles.robinson@medinova.com",
-    "doctor_image": "images/doctors/charles_robinson.jpg"
+    "doctor_image": "https://i.ibb.co/kxmYtCC/large-Smile-Guy-web.jpg"
   },
   {
     "doctor_name": "Dr. Jennifer Martinez",
     "doctor_location": "Columbus, OH",
     "doctor_fee": 190,
     "doctor_email": "jennifer.martinez@medinova.com",
-    "doctor_image": "images/doctors/jennifer_martinez.jpg"
+    "doctor_image": "https://i.ibb.co/WVpbTsg/41808433-l.jpg"
   },
   {
     "doctor_name": "Dr. William Walker",
     "doctor_location": "Fort Worth, TX",
     "doctor_fee": 200,
     "doctor_email": "william.walker@medinova.com",
-    "doctor_image": "images/doctors/william_walker.jpg"
-  },
-  {
-    "doctor_name": "Dr. Barbara Young",
-    "doctor_location": "Charlotte, NC",
-    "doctor_fee": 185,
-    "doctor_email": "barbara.young@medinova.com",
-    "doctor_image": "images/doctors/barbara_young.jpg"
-  },
-  {
-    "doctor_name": "Dr. Richard Allen",
-    "doctor_location": "Detroit, MI",
-    "doctor_fee": 210,
-    "doctor_email": "richard.allen@medinova.com",
-    "doctor_image": "images/doctors/richard_allen.jpg"
-  },
-  {
-    "doctor_name": "Dr. Susan King",
-    "doctor_location": "El Paso, TX",
-    "doctor_fee": 200,
-    "doctor_email": "susan.king@medinova.com",
-    "doctor_image": "images/doctors/susan_king.jpg"
-  },
-  {
-    "doctor_name": "Dr. Joseph Wright",
-    "doctor_location": "Boston, MA",
-    "doctor_fee": 220,
-    "doctor_email": "joseph.wright@medinova.com",
-    "doctor_image": "images/doctors/joseph_wright.jpg"
-  },
-  {
-    "doctor_name": "Dr. Karen Scott",
-    "doctor_location": "Denver, CO",
-    "doctor_fee": 195,
-    "doctor_email": "karen.scott@medinova.com",
-    "doctor_image": "images/doctors/karen_scott.jpg"
+    "doctor_image": "https://i.ibb.co/hsr4XPf/profile-photo-attractive-family-doc-600nw-1724693776.webp"
   }
 ]

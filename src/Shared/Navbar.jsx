@@ -12,7 +12,9 @@ const Navbar = () => {
 
   if (loading) {
     return (
-      <></>
+      <>
+        <h1>loading...</h1>
+      </>
     );
   }
 
