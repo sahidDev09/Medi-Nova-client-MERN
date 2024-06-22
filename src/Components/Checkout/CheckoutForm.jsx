@@ -104,6 +104,7 @@ const CheckoutForm = ({ price, testsDetails, refetch, appointmentTime }) => {
               test_date: testsDetails?.test_date,
               test_image: testsDetails?.image,
               test_id: testsDetails?._id,
+              test_price: testsDetails?.test_price,
               time: appointmentTime,
               email: user?.email,
               report_status: "pending",
