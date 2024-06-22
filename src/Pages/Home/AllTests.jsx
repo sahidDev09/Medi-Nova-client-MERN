@@ -7,7 +7,7 @@ import { DNA } from "react-loader-spinner";
 const AllTests = () => {
   const axiosPublic = useAxiosPublic();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [search, setSearch] = useState("");
   const cardsPerPage = 6;
 
   const { data: tests = [], isLoading } = useQuery({
@@ -24,7 +24,7 @@ const AllTests = () => {
   );
 
   const filteredTests = futureTests.filter((test) =>
-    test.test_date.includes(searchQuery)
+    test.test_date.includes(search)
   );
 
   const startIndex = (currentPage - 1) * cardsPerPage;
@@ -47,7 +47,7 @@ const AllTests = () => {
   };
 
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+    setSearch(event.target.value);
     setCurrentPage(1);
   };
 
@@ -62,7 +62,7 @@ const AllTests = () => {
             type="number"
             placeholder="Search by date"
             className="input input-bordered w-full md:w-auto focus:outline-[#8F85DD]"
-            value={searchQuery}
+            value={search}
             onChange={handleSearchChange}
           />
         </div>

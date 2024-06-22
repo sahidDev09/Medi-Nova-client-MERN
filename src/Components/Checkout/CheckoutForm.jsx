@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, testsDetails, refetch }) => {
+const CheckoutForm = ({ price, testsDetails, refetch, appointmentTime }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
@@ -104,6 +104,7 @@ const CheckoutForm = ({ price, testsDetails, refetch }) => {
               test_date: testsDetails?.test_date,
               test_image: testsDetails?.image,
               test_id: testsDetails?._id,
+              time: appointmentTime,
               email: user?.email,
               report_status: "pending",
             };
@@ -114,7 +115,7 @@ const CheckoutForm = ({ price, testsDetails, refetch }) => {
                 toast.success(
                   "Your appointment is booked for the selected date"
                 );
-                navigate("");
+                navigate("/dashboard/myAppointments");
                 setError("");
               }
             });

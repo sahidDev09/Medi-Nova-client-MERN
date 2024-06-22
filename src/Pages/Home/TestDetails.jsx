@@ -13,6 +13,7 @@ const TestDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const [showModal, setShowModal] = useState([]);
+  const [appointmentTime, setAppointmentTime] = useState("");
 
   const {
     data: testsDetails = {},
@@ -50,6 +51,10 @@ const TestDetails = () => {
         return;
       }
     });
+  };
+
+  const handleTime = (e) => {
+    setAppointmentTime(e.target.value);
   };
 
   return (
@@ -100,6 +105,22 @@ const TestDetails = () => {
                 editableDateInputs={false}
               />
             </div>
+
+            <div className=" flex flex-col gap-2">
+              <label className=" text-gray-600" htmlFor="time">
+                Appoointment time
+              </label>
+              <input
+                id="time"
+                type="time"
+                name="time"
+                value={appointmentTime}
+                onChange={handleTime}
+                className="input border border-gray-400 w-full focus:outline-none"
+                required
+              />
+            </div>
+
             <button
               onClick={handleBooked}
               className="btn bg-[#473288] text-white">
@@ -115,7 +136,8 @@ const TestDetails = () => {
             key={index}
             modal={modal}
             testsDetails={testsDetails}
-            refetch={refetch}></PaymentModal>
+            refetch={refetch}
+            appointmentTime={appointmentTime}></PaymentModal>
         ))}
     </div>
   );

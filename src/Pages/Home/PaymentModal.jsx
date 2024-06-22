@@ -8,7 +8,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
-const PaymentModal = ({ modal, testsDetails, refetch }) => {
+const PaymentModal = ({ modal, testsDetails, refetch, appointmentTime }) => {
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
   const axiosPublic = useAxiosPublic();
 
@@ -92,6 +92,7 @@ const PaymentModal = ({ modal, testsDetails, refetch }) => {
               price={finalPrice}
               testsDetails={testsDetails}
               refetch={refetch}
+              appointmentTime={appointmentTime}
             />
           </Elements>
         </div>
