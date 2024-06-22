@@ -6,6 +6,7 @@ import { FaChessKing, FaDownload } from "react-icons/fa";
 import { MdBlockFlipped } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
+import { Helmet } from "react-helmet";
 
 const Allusers = () => {
   const axiosSecure = useAxiosSecure();
@@ -73,6 +74,7 @@ const Allusers = () => {
 
   return (
     <div className="bg-slate-50 p-4 rounded-md mt-14 md:mt-0">
+      <Helmet>Medinova-All users</Helmet>
       <h1 className="text-2xl">Total users: {users.length}</h1>
       <div>
         <div className="overflow-x-auto">

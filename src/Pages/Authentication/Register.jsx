@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { PiSpinnerBallFill } from "react-icons/pi";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
@@ -83,6 +84,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>Medinova-Register</Helmet>
       <div className="flex flex-col p-6 rounded-md sm:p-10 bg-blue-50 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold text-[#473288]">Sign Up</h1>

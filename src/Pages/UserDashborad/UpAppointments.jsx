@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { TiCancel } from "react-icons/ti";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const UpAppointments = () => {
   const axiosSecure = useAxiosSecure();
@@ -46,6 +47,7 @@ const UpAppointments = () => {
 
   return (
     <div>
+      <Helmet>Medinova-Upcoming Appointment</Helmet>
       <h1 className=" text-4xl font-bold text-center my-3 mb-5">
         Your Upcomming Appointments
       </h1>

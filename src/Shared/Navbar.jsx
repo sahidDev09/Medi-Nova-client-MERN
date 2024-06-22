@@ -82,6 +82,15 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
+                to="/doctors"
+                className={({ isActive }) =>
+                  isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""
+                }>
+                Doctors
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/about"
                 className={({ isActive }) =>
                   isActive ? "bg-[#473288] p-2 text-white rounded-md" : ""

@@ -59,6 +59,7 @@ const TestDetails = () => {
 
   return (
     <div>
+      <Helmet>Medinova-Details</Helmet>
       <div className="container mx-auto mt-14 p-2 md:p-0 min-h-[600px]">
         <Helmet>
           <title>MediNova | Tests details</title>

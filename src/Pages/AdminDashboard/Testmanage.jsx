@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Testmanage = () => {
   const axiosSecure = useAxiosSecure();
@@ -55,6 +56,7 @@ const Testmanage = () => {
 
   return (
     <div className="relative z-10 mt-14 md:mt-0">
+      <Helmet>Medinova-Test management</Helmet>
       <h1 className="text-4xl font-bold text-center mt-5">Manage-Tests</h1>
       <hr className="my-5" />
 

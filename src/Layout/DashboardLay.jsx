@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Components/Dashboard/Sidebar";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const DashboardLay = () => {
   const [isActive, setIsActive] = useState(false);
@@ -11,6 +12,7 @@ const DashboardLay = () => {
 
   return (
     <div className="relative min-h-screen md:flex">
+      <Helmet>Medinova-Dashboard</Helmet>
       {/* Sidebar */}
       <div
         className={`fixed md:w-72 w-full z-40 ${

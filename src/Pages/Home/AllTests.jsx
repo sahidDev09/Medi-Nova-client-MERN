@@ -3,6 +3,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import TestsCard from "./TestsCard";
 import { useState } from "react";
 import { DNA } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const AllTests = () => {
   const axiosPublic = useAxiosPublic();
@@ -53,6 +54,7 @@ const AllTests = () => {
 
   return (
     <div>
+      <Helmet>Medinova-Alltest</Helmet>
       <div className=" flex items-center justify-between my-2">
         <h1 className="text-4xl font-semibold text-center my-3 hidden md:table-cell">
           All Tests

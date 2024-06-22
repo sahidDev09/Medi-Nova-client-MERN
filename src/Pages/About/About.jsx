@@ -1,10 +1,12 @@
 import Lottie from "lottie-react";
 
 import lottieMedical from "../../assets/medical.json";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   return (
     <div className="lg:m-10 grid md:grid-cols-1 lg:grid-cols-2 items-center gap-4 m-2 md:m-0">
+      <Helmet>Medinova-about</Helmet>
       <div className=" flex flex-col gap-4">
         <h1 className="lg:text-4xl md:2xl text-xl font-bold">About Medinova</h1>
 

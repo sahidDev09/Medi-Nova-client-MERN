@@ -6,6 +6,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const UpdateTest = () => {
   const { id } = useParams();
@@ -108,6 +109,7 @@ const UpdateTest = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>Medinova- Update test</Helmet>
       <div className="flex flex-col p-6 rounded-md sm:p-10 bg-blue-50 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold text-[#473288]">

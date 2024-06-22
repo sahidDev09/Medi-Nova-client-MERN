@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const MyProfile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -106,6 +107,7 @@ const MyProfile = () => {
 
   return (
     <div>
+      <Helmet>Medinova-Profile</Helmet>
       <h1 className="text-4xl font-black">YOUR PROFILE</h1>
 
       <div className="p-10 bg-blue-50 rounded-xl my-6">

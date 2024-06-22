@@ -1,6 +1,9 @@
+import { Helmet } from "react-helmet";
+
 const MyTestResult = () => {
   return (
     <div className=" flex justify-center text-center items-center h-screen">
+      <Helmet>Medinova-Reports</Helmet>
       <div>
         <img
           className=" md:w-[500px]"

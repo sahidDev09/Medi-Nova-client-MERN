@@ -21,6 +21,7 @@ import AllBanner from "../Pages/AdminDashboard/AllBanner";
 import AddBanner from "../Pages/AdminDashboard/AddBanner";
 import Contact from "../Pages/Contact/Contact";
 import About from "../Pages/About/About";
+import Doctors from "../Pages/Home/Doctors";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/doctors",
+        element: <Doctors />,
       },
       {
         path: "/alltests/:id",
@@ -89,6 +94,8 @@ export const router = createBrowserRouter([
         path: "myProfile",
         element: <MyProfile />,
       },
+
+      
 
       // all admin dashboard routes
       {

@@ -1,8 +1,10 @@
+import { Helmet } from "react-helmet";
 import "./contact.css";
 
 const Contact = () => {
   return (
     <div id="contact" className=" my-5">
+      <Helmet>Medinova-contact</Helmet>
       <section className="contact rounded-md">
         <div className="container">
           <div className="left">

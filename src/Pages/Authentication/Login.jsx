@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { PiSpinnerBallFill } from "react-icons/pi";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -34,10 +35,9 @@ const Login = () => {
     }
   };
 
-
-
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>Medinova-Login</Helmet>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-blue-50 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold text-[#473288]">Log In</h1>
@@ -120,7 +120,6 @@ const Login = () => {
             className="hover:underline hover:text-rose-500 text-gray-600">
             Sign up
           </Link>
-          .
         </p>
       </div>
     </div>
