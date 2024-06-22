@@ -2,7 +2,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { ImProfile } from "react-icons/im";
-import { FaClipboardList, FaUsers } from "react-icons/fa";
+import { FaChartPie, FaClipboardList, FaUsers } from "react-icons/fa";
 import { GiHypodermicTest } from "react-icons/gi";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import useAuth from "../../Hooks/useAuth";
@@ -10,7 +10,11 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AiOutlineBars } from "react-icons/ai";
 import { PiFlagBannerFill } from "react-icons/pi";
-import { MdNoteAdd, MdOutlinePageview } from "react-icons/md";
+import {
+  MdNoteAdd,
+  MdOutlineManageHistory,
+  MdOutlinePageview,
+} from "react-icons/md";
 import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = ({ isActive, handleSideToggle }) => {
@@ -88,7 +92,7 @@ const Sidebar = ({ isActive, handleSideToggle }) => {
                   className={({ isActive }) =>
                     `nav-link ${isActive ? "nav-link-active" : ""}`
                   }>
-                  <PiFlagBannerFill />
+                  <FaChartPie />
                   <span className="mx-2 text-sm font-medium">Statistic</span>
                 </NavLink>
 
@@ -115,7 +119,7 @@ const Sidebar = ({ isActive, handleSideToggle }) => {
                   className={({ isActive }) =>
                     `nav-link ${isActive ? "nav-link-active" : ""}`
                   }>
-                  <MdNoteAdd />
+                  <MdOutlineManageHistory />
                   <span className="mx-2 text-sm font-medium">Manage Tests</span>
                 </NavLink>
 

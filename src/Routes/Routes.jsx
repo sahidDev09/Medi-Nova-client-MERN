@@ -17,6 +17,8 @@ import UpdateTest from "../Pages/AdminDashboard/UpdateTest";
 import AllTests from "../Pages/Home/AllTests";
 import TestDetails from "../Pages/Home/TestDetails";
 import WelcomeDash from "../Pages/WelcomeDash";
+import AllBanner from "../Pages/AdminDashboard/AllBanner";
+import AddBanner from "../Pages/AdminDashboard/AddBanner";
 
 export const router = createBrowserRouter([
   {
@@ -108,6 +110,23 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <UpdateTest />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "bannerlist",
+        element: (
+          <AdminRoutes>
+            <AllBanner />,
+          </AdminRoutes>
+        ),
+      },
+
+      {
+        path: "add-banner",
+        element: (
+          <AdminRoutes>
+            <AddBanner />
           </AdminRoutes>
         ),
       },

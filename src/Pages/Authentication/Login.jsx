@@ -1,20 +1,17 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { PiSpinnerBallFill } from "react-icons/pi";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
-  const axiosPublic = useAxiosPublic();
-
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { loading, setLoading, signInWithGoogle, signIn } = useAuth();
+  const { loading, setLoading, signIn } = useAuth();
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -39,28 +36,28 @@ const Login = () => {
 
   // login with goole
 
-  const handleGoogle = async () => {
-    try {
-      setLoading(true);
-      await signInWithGoogle().then((result) => {
-        const userData = {
-          name: result.user?.displayName,
-          image: result.user?.photoURL,
-          email: result.user?.email,
-          status: "active",
-        };
+  // const handleGoogle = async () => {
+  //   try {
+  //     setLoading(true);
+  //     await signInWithGoogle().then((result) => {
+  //       const userData = {
+  //         name: result.user?.displayName,
+  //         image: result.user?.photoURL,
+  //         email: result.user?.email,
+  //         status: "active",
+  //       };
 
-        axiosPublic.post("/users", userData).then(() => {
-          navigate(from, { replace: true });
-          toast.success("Signup with google account");
-          setLoading(false);
-        });
-      });
-    } catch (error) {
-      toast.error("Something went wrong!");
-      setLoading(false);
-    }
-  };
+  //       axiosPublic.post("/users", userData).then(() => {
+  //         toast.success("Signup with google account");
+  //         setLoading(false);
+  //         navigate("/", { replace: true });
+  //       });
+  //     });
+  //   } catch (error) {
+  //     toast.error("Something went wrong!");
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -138,13 +135,7 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div
-          onClick={handleGoogle}
-          className="flex justify-center items-center space-x-2 border m-3 p-2 border-[#C3C1F9] border-rounded cursor-pointer">
-          <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
-        </div>
         <p className="px-6 text-sm text-center text-gray-400">
           Do not have an account yet?
           <Link

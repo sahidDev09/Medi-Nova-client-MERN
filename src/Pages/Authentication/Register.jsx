@@ -24,7 +24,6 @@ const Register = () => {
   });
 
   // authentication
-
   const { updateUserProfile, createUser, loading, setLoading } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -43,7 +42,7 @@ const Register = () => {
     formData.append("image", image);
 
     if (password !== confirmPass) {
-      alert("Password do not matched!");
+      alert("Passwords do not match!");
       return;
     }
 
@@ -59,26 +58,26 @@ const Register = () => {
       const result = await createUser(email, password);
       console.log(result);
       await updateUserProfile(name, data.data.display_url);
-      navigate("/dashboard");
+      navigate("/");
       setLoading(false);
 
       const userInputData = {
-        name: name,
+        name,
         image: data.data.display_url,
-        email: email,
-        bloodGroug: bloodGroup,
-        district: district,
-        upazila: upazila,
+        email,
+        bloodGroup,
+        district,
+        upazila,
         status: "active",
       };
 
-      axiosPublic.post("/users", userInputData).then((res) => {
-        if (res.data.insertedId) {
-          toast.success("Account created successfully");
-        }
-      });
+      const res = await axiosPublic.post("/allusers", userInputData);
+      if (res.data.insertedId) {
+        toast.success("Account created successfully");
+      }
     } catch (error) {
-      toast.error("Ohh ohh something went wrong..!", +error.message);
+      setLoading(false);
+      toast.error("Ohh ohh something went wrong..!" + error.message);
     }
   };
 
@@ -92,7 +91,7 @@ const Register = () => {
         <form
           onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valid">
-          <div className=" grid md:grid-cols-2 items-center gap-4 justify-center">
+          <div className="grid md:grid-cols-2 items-center gap-4 justify-center">
             <div className="space-y-4">
               <div>
                 <label htmlFor="name" className="block mb-2 text-sm">
@@ -159,7 +158,7 @@ const Register = () => {
             </div>
             <div className="space-y-4">
               <div>
-                <label htmlFor="blood-group" className="block mb-2 text-sm">
+                <label htmlFor="bloodGroup" className="block mb-2 text-sm">
                   Blood Group
                 </label>
                 <select
@@ -238,7 +237,7 @@ const Register = () => {
               type="submit"
               className="bg-[#8F85DD] w-full rounded-md py-3 text-white">
               {loading ? (
-                <PiSpinnerBallFill className=" mx-auto text-xl animate-spin" />
+                <PiSpinnerBallFill className="mx-auto text-xl animate-spin" />
               ) : (
                 "Create Account"
               )}
@@ -247,10 +246,8 @@ const Register = () => {
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account?{" "}
           <Link
