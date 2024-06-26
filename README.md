@@ -6,15 +6,41 @@ MediNova is a comprehensive diagnostic center management system designed to stre
 
 Check out the live preview of the website [here](https://medinova-dc16a.web.app).
 
+## HOME PAGE
+
+![Home](https://i.ibb.co/KyTgHsM/SCR-20240626-qqhg.jpg)
+
+## Test Details page
+
+![Details](https://i.ibb.co/FmsJK12/SCR-20240626-qqlr.jpg)
+
+## Nearby Doctors
+
+![Doctors](https://i.ibb.co/zrXvT0g/SCR-20240626-qqtc.jpg)
+
+## Payment Gateway
+
+![stripe](https://i.ibb.co/fS7FMyS/SCR-20240626-qrun.png)
+
+## Admin Dashboard
+
+![Admin](https://i.ibb.co/QF5QgS9/SCR-20240626-qqzf.png)
+
+## User Dashboard
+
+![user](https://i.ibb.co/YPHcjR4/SCR-20240626-qrgj.png)
+
 ## Key Features
 
 ### User Dashboard
+
 - **Book Appointments:** Users can easily schedule their appointments.
 - **Cancel Appointments:** Flexibly manage and cancel appointments.
 - **Authentication:** Secure login for users.
 - **Responsive Design:** Accessible on both mobile and tablet devices.
 
 ### Admin Dashboard
+
 - **Manage Appointments:** Administrators can view and manage all user appointments.
 - **User Management:** Admins can manage user accounts and access levels.
 - **Dynamic Banner:** Admins can update and customize banners dynamically.
@@ -41,8 +67,6 @@ Check out the live preview of the website [here](https://medinova-dc16a.web.app)
   - MongoDB
 - **Authentication and Hosting:**
   - Firebase
-
-
 
 ## Acknowledgements
 

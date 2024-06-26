@@ -22,6 +22,7 @@ import AddBanner from "../Pages/AdminDashboard/AddBanner";
 import Contact from "../Pages/Contact/Contact";
 import About from "../Pages/About/About";
 import Doctors from "../Pages/Home/Doctors";
+import AllReservation from "../Pages/AdminDashboard/AllReservation";
 
 export const router = createBrowserRouter([
   {
@@ -95,8 +96,6 @@ export const router = createBrowserRouter([
         element: <MyProfile />,
       },
 
-      
-
       // all admin dashboard routes
       {
         path: "allusers",
@@ -144,6 +143,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <AddBanner />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "reservation/:test_id",
+        element: (
+          <AdminRoutes>
+            <AllReservation />
           </AdminRoutes>
         ),
       },

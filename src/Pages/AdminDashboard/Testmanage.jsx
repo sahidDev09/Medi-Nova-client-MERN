@@ -115,9 +115,11 @@ const Testmanage = () => {
                       data-tooltip-content="Delete">
                       <MdDelete />
                     </button>
-                    <button className="btn bg-[#C3C1F9] hover:bg-[#8985f6]">
-                      See Reservation
-                    </button>
+                    <Link to={`/dashboard/reservation/${test._id}`}>
+                      <button className="btn bg-[#C3C1F9] hover:bg-[#8985f6]">
+                        See Reservation
+                      </button>
+                    </Link>
                   </th>
                 </tr>
               </tbody>
