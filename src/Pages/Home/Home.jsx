@@ -75,7 +75,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full bg-blue-100 my-5 rounded-md">
+      <div className="w-full bg-blue-100 my-5 rounded-md h-[600px] overflow-hidden">
         {banner.map((singleBanner, index) => (
           <Banner key={index} banner={singleBanner}></Banner>
         ))}

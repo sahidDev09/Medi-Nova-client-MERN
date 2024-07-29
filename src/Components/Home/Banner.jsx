@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import { Link } from "react-router-dom";
 
 const Banner = ({ banner }) => {
   return (
-    <div className="grid md:grid-cols-2 gap-5 justify-between items-center px-5">
+    <div className="grid md:grid-cols-2 gap-5 justify-between items-center px-5 h-full relative">
       <div>
         <h1 className=" md:text-6xl text-2xl text-[#473288] font-extrabold mb-2">
           {banner.title}
@@ -31,8 +30,8 @@ const Banner = ({ banner }) => {
           </button>
         </Link>
       </div>
-      <div>
-        <img src={banner.image} alt="" />
+      <div className="right-5 absolute bottom-0 h-full">
+        <img className="h-full w-full object-fill" src={banner.image} alt="" />
       </div>
     </div>
   );
