@@ -23,6 +23,7 @@ import Contact from "../Pages/Contact/Contact";
 import About from "../Pages/About/About";
 import Doctors from "../Pages/Home/Doctors";
 import AllReservation from "../Pages/AdminDashboard/AllReservation";
+import Statistic from "../Pages/AdminDashboard/Statistic/Statistic";
 
 export const router = createBrowserRouter([
   {
@@ -102,6 +103,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <Allusers />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "statistics",
+        element: (
+          <AdminRoutes>
+            <Statistic />
           </AdminRoutes>
         ),
       },
