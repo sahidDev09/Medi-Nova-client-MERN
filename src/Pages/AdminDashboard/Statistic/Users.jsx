@@ -16,11 +16,13 @@ const Users = () => {
     return <h1>User Loading please wait..</h1>;
   }
 
-  console.log(users);
+  const totalAdmin = users.filter((user) => user.role === "admin").length;
+  const totalActive = users.filter((user) => user.status === "active").length;
+  const totalBlocked = users.filter((user) => user.status === "blocked").length;
 
   return (
     <div className=" flex gap-3 ml-12 mr-4 mt-3">
-      <div className=" bg-[#c3c1f989] w-fit flex gap-3 justify-center items-center rounded-md">
+      <div className=" bg-[#c3c1f951] w-fit flex gap-3 justify-center items-center rounded-md">
         <h1 className=" text-3xl uppercase font-extrabold pl-5">
           Total
           <br /> Users
@@ -29,7 +31,7 @@ const Users = () => {
           {users.length}
         </h1>
       </div>
-      <div className=" bg-[#c3c1f989] w-full gap-3 rounded-md p-4">
+      <div className=" bg-[#c3c1f951] w-full gap-3 rounded-md p-4">
         <h1 className=" text-lg font-semibold text-center">Users analysis</h1>
         <hr className=" border-1 border-gray-200 my-2" />
         <div className=" flex justify-evenly gap-5 my-3">
@@ -40,7 +42,8 @@ const Users = () => {
               alt=""
             />
             <h1 className=" text-xl font-bold">
-              Total Admins: <span className=" text-orange-600">3</span>
+              Total Admins:
+              <span className=" text-orange-600">{totalAdmin}</span>
             </h1>
           </div>
           <div>
@@ -50,7 +53,8 @@ const Users = () => {
               alt=""
             />
             <h1 className=" text-xl font-bold">
-              Active Users: <span className=" text-green-600">10</span>
+              Active Users:
+              <span className=" text-green-600">{totalActive}</span>
             </h1>
           </div>
           <div>
@@ -60,7 +64,8 @@ const Users = () => {
               alt=""
             />
             <h1 className=" text-xl font-bold">
-              Blocked Users: <span className=" text-orange-600">1</span>
+              Blocked Users:{" "}
+              <span className=" text-orange-600">{totalBlocked}</span>
             </h1>
           </div>
         </div>
