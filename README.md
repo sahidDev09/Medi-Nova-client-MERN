@@ -4,7 +4,7 @@ MediNova is a comprehensive diagnostic center management system designed to stre
 
 ## Live Preview
 
-Check out the live preview of the website [here](https://medinova-dc16a.web.app).
+Check out the live preview of the website [here](https://medinova-dc16a.firebaseapp.com).
 
 ## HOME PAGE
 
